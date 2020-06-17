@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<root name="string_parameter_constraint_demo">
+    <parameter name="param_0" type="string" values="apple;banana;cherry" nb_instances="3"/>
+
+    <constraint name="constraint_demo"
+                expressions="string_parameter_constraint_demo\param_0[1] EQ apple"/>
+</root>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<root name="test_case">
+    <node name="crop_field" nb_instances="1">
+        <parameter name="vegetable" type="string" values="cabbage;leek"/>
+        <node name="row" min="1" max="1">
+	        <parameter name="length" type="real" min="10.0" max="100.0"/>
+	        <constraint name="interval" type="forall"
+	                    expressions="row[i]\length INFEQ 1.1*row[i-1]\length;
+                                     row[i]\length SUPEQ 0.9*row[i-1]\length"
+	                    quantifiers="i"
+	                    ranges="[1, row.nb_instances-1]"/>
+	        <constraint name="interval_2"
+	                    expressions="row[0]\length INFEQ 1.1*row[row.nb_instances - 1]\length;
+	                                 row[0]\length SUPEQ 0.9*row[row.nb_instances - 1]\length"/>
+	    </node>
+	</node>
+
+    <node name="mission" nb_instances="1">
+	    <parameter name="is_first_track_outer" type="boolean"/>
+	    <constraint name="first_track"
+	                      expressions="IMPLIES(..\field\row.nb_instances EQ 1, .\is_first_track_outer EQ True)"/>
+	</node>
+
+</root>

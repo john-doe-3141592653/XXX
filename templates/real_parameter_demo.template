@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<root name="real_parameter_demo">
+    <parameter name="param_0" type="real" min="-5.0" max="10.0" distribution="u"/>
+    <parameter name="param_1" type="real" min="-5.0" max="10.0" distribution="u" nb_instances="5"/>
+    <parameter name="param_2" type="real" min="-5.0" max="10.0" distribution="n"/>
+    <parameter name="param_3" type="real" min="-5.0" max="10.0" distribution="n" mean="0" variance="1"/>
+    <parameter name="param_4" type="real" min="-5.0" max="10.0" distribution="n" mean="0" variance="1" nb_instances="10"/>
+    <parameter name="param_5" type="real" min="-5.0" max="10.0" distribution="i" ranges="[0,5.3];[6.1,7];[9,9.9]"/>
+    <parameter name="param_6" type="real" min="-5.0" max="10.0" distribution="i" ranges="[0,5.3];[6.1,7];[9,9.9]" weights="0;5;1"/>
+    <parameter name="param_7" type="real" min="-5.0" max="10.0" distribution="i" ranges="[0,5.3];[6.1,7];[9,9.9]" weights="0;5;1" nb_instances="15"/>
+</root>
