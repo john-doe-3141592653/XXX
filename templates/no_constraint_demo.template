@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
 <root name="root">
-    <constraint name="c1" type="forall" expressions="root\root_param[i] EQ root[0]\bar[0]\bar_param[i + root.nb_instances - 1].values" quantifiers="i" ranges="[0, root[0].nb_instances - 1]"/>
 	<parameter name="root_param" type="boolean" nb_instance="2"/>
 
 	<node name="foo" min="0" max="3">
