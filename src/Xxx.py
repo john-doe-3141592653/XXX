@@ -55,80 +55,80 @@ class CLI(cmd.Cmd, object):
 
 		main_color = "cyan"
 		shadow_color = "magenta"
-        
-        self.intro = misc.color(u"\n       \u2588\u2588", main_color) + \
-            misc.color(u"\u2557  ", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557  ", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557  ", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557\n", shadow_color) + \
-            misc.color(u"       \u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u"\u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u"\u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D\n", shadow_color) + \
-            misc.color(u"   \u2588\u2588\u2588", main_color) + \
-            misc.color(u"\u2557 \u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u"  \u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u"  \u255A", shadow_color) + \
-            misc.color(u"\u2588\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u" \u2588\u2588\u2588", main_color) + \
-            misc.color(u"\u2557\n", shadow_color) + \
-            misc.color(u"   \u255A\u2550\u2550\u255D", shadow_color) + \
-            misc.color(u" \u2588\u2588", main_color) + \
-            misc.color(u"\u2554", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"  \u2588\u2588", main_color) + \
-            misc.color(u"\u2554", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"  \u2588\u2588", main_color) + \
-            misc.color(u"\u2554", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u" \u255A\u2550\u2550\u255D\n", shadow_color) + \
-            misc.color(u"       \u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u" \u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u" \u2588\u2588", main_color) + \
-            misc.color(u"\u2557", shadow_color) + \
-            misc.color(u"\u2588\u2588", main_color) + \
-            misc.color(u"\u2554\u255D", shadow_color) + \
-            misc.color(u" \u2588\u2588", main_color) + \
-            misc.color(u"\u2557\n", shadow_color) + \
-            misc.color(u"       \u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\n",shadow_color)
+
+		self.intro = misc.color(u"\n       \u2588\u2588", main_color) +\
+					misc.color(u"\u2557  ", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557  ", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557  ", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557\n", shadow_color) +\
+					misc.color(u"       \u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u"\u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u"\u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D\n", shadow_color) +\
+					misc.color(u"   \u2588\u2588\u2588", main_color) +\
+					misc.color(u"\u2557 \u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u"  \u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u"  \u255A", shadow_color) +\
+					misc.color(u"\u2588\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u" \u2588\u2588\u2588", main_color) +\
+					misc.color(u"\u2557\n", shadow_color) +\
+					misc.color(u"   \u255A\u2550\u2550\u255D", shadow_color) +\
+					misc.color(u" \u2588\u2588", main_color) +\
+					misc.color(u"\u2554", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"  \u2588\u2588", main_color) +\
+					misc.color(u"\u2554", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"  \u2588\u2588", main_color) +\
+					misc.color(u"\u2554", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u" \u255A\u2550\u2550\u255D\n", shadow_color) +\
+					misc.color(u"       \u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u" \u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u" \u2588\u2588", main_color) +\
+					misc.color(u"\u2557", shadow_color) +\
+					misc.color(u"\u2588\u2588", main_color) +\
+					misc.color(u"\u2554\u255D", shadow_color) +\
+					misc.color(u" \u2588\u2588", main_color) +\
+					misc.color(u"\u2557\n", shadow_color) +\
+					misc.color(u"       \u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\n",shadow_color)
 		self.prompt = "XXX > "
 
 		self.p = Path()
 		self.tree = None
 		self.overwrite = False
 		self.verbose = True
-
+				
 	def emptyline(self):
 		pass
 
