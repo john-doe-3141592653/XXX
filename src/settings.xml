@@ -1,5 +1,5 @@
 <settings>
-    <parameter name="template_path" type="path" value="./" />
+    <parameter name="template_path" type="path" value="../templates/" />
     <parameter name="template_file_name" type="file" value="integer_parameter_constraint_demo.template" />
     <parameter name="experiment_path" type="path" value="../" />
     <parameter name="experiment_folder_name" type="folder" value="experiment" />
