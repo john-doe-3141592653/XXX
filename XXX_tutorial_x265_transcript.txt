@@ -1,0 +1,49 @@
+# XXX: a tool for diverse and constrained test case generation
+
+# Welcome, this is a minimum working example for XXX
+# dependencies
+pip install z3-solver
+pip install numpy
+
+git clone https://github.com/john-doe-3141592653/XXX
+
+cd XXX/
+ls
+cd templates/
+ls
+# this is the default template
+cat integer_parameter_constraint_demo.template
+cd ..
+ls
+cd src
+ls
+python3 Xxx.py
+display all
+parse_template # XXX has autocomplete on Linux!
+generate
+Y
+exit
+cd ..
+ls
+cd experiment/
+ls
+cd test_case_0
+ls
+# these are the instantiated parameters
+cat test_case_0.test_case
+
+
+# now we will show the help function and how to change the settings
+cd ..
+cd ..
+ls
+python3 Xxx.py
+help
+help display
+display all
+help set
+set template_file_name oz_complete.template
+Y
+display all
+parse_template
+...
