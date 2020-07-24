@@ -3,25 +3,31 @@
 	--- XXX: xxxxxxx xxxxxxxxxx xxxxxxxxx ---
 	-----------------------------------------
 
+The purpose of XXX is to generate random test case from a template file describing
+the data model. XXX provides a command line interface. When launched, type "help"
+in the prompt to get a list of the available commands.
+Type "help <command_name> to get specific info on a command.
+
+
 Requirements: 
 	Python		 	3.6
 	packages:
 	  - Numpy		1.18.4
-	  - z3-solver	4.8.8.0
+	  - z3-solver		4.8.8.0
 
-The purpose of XXX is to generate random test case from a template file describing 
-the data model. XXX provides a command line interface. When launched, type "help" 
-in the prompt to get a list of the available commands.
-Type "help <command_name> to get specific info on a command.
 
-Use the "display all" command to see the current settings. The "set" command can 
-be used to change the settings.
+Installation:
+	follow the video or use the transcript after installing python 3.6
+
 
 Typical usage (more details in the video):
-	- Step 0: cd path/XXX/src
-	- Step 1: Launch XXX: python3 Xxx.py
-	- Step 2: In XXX prompt: parse_template
-	- Step 3: Find your test cases in the folder "experiment"
+	- cd path/XXX/src
+	- python3 Xxx.py 										%launch XXX
+	- display all 											%visualize the settings
+	- parse_template										%parse the template
+	- generate												%generate test cases
+	- cat ../experiment/test_case_0/test_case_0.test_case	%visualize the result
+
 
 Contents of the repository:
 	- src: the source code and the default settings
