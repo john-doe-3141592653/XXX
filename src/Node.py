@@ -254,7 +254,7 @@ class Node(Element):
 				if sub_name == ".":
 					return self.get_element_from_current_node(tail)
 				elif sub_name == "..":
-					return self.__get_element_from_parent(tail)
+					return self.get_element_from_current_node(tail)
 				if sub_name in self.children:
 					c = self.get_child_n(sub_name, index)
 					if c is not None:
