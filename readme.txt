@@ -22,10 +22,10 @@ Installation:
 
 Typical usage (more details in the video):
 	- cd path/XXX/src
-	- python3 Xxx.py 										%launch XXX
-	- display all 											%visualize the settings
-	- parse_template										%parse the template
-	- generate												%generate test cases
+	- python3 Xxx.py 					%launch XXX
+	- display all 						%visualize the settings
+	- parse_template					%parse the template
+	- generate						%generate test cases
 	- cat ../experiment/test_case_0/test_case_0.test_case	%visualize the result
 
 
