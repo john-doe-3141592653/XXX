@@ -159,6 +159,10 @@ class Constraint(Element):
 
 	def process(self):
 		if self.__raw_quantifiers:
+			tmp = []
+			for i in self.__raw_quantifiers:
+				tmp.append([0,0])
+			self.__quantifiers = Quantifier(self.__raw_quantifiers, tmp)
 			if self.__build_ranges():
 				self.__quantifiers = Quantifier(self.__raw_quantifiers, self.__ranges)
 			else:
@@ -168,10 +172,25 @@ class Constraint(Element):
 				#print("current quantifier(s):")
 				#print(self.__quantifiers.get_current_values())
 				self.__build_expressions()
-				if not self.__quantifiers.next_combination():
+				a, b = self.__quantifiers.next_combination()
+				if not a:
 					break
+				if b:
+					self.__ranges = []
+					if self.__build_ranges():
+						self.__quantifiers.update(self.__raw_quantifiers, self.__ranges)
+					
 		else:
 			self.__build_expressions()
+
+		if self.__type == "exist" and len(self.__expressions) > 1:
+			tmp = "z3.Or("
+			for e in self.__expressions:
+				tmp += e + ", "
+			tmp = tmp[:-2] + ")"
+			self.__expressions = []
+			self.__expressions.append(tmp)
+
 
 	def __build_expressions(self):
 		for e in self.__raw_expressions:
@@ -185,7 +204,6 @@ class Constraint(Element):
 				for i in range(len(s)):
 					expr = expr.replace(s[i], v[i])
 				self.__expressions.append(expr)
-
 
 	def __build_string_parameter_expression(self, token_array):
 		str_array = []
@@ -384,12 +402,21 @@ class Quantifier():
 
 	def next_combination(self, i=0):
 		if i == len(self.__names):
-			return False
+			return False, False
 
 		if self.next_i(i):
-			return True
+			return True, False
 		else:
-			return self.next_combination(i + 1)
+			a, b = self.next_combination(i + 1)
+			return a, True
+
+	def update(self, n, r):
+		self.__names = n
+		self.__ranges = r
+	
+		for i in range(len(n)):
+			if not r[i][0] <= self.__current_values[i] <= r[i][1]:
+				self.__current_values[i] = r[i][0]
 
 	def get_current_values(self):
 		q = {}

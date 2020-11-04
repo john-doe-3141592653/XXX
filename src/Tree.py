@@ -80,8 +80,8 @@ class Tree():
 	def generate_export_functions(self):
 		create_export(self.__root)
 
-	def export(self):
-		export(self.__root)
+	def export(self, path):
+		export(self.__root, path)
 
 	def build_constraints(self):
 		self.__root.build_constraints()

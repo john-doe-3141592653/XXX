@@ -194,6 +194,7 @@ class CLI(cmd.Cmd, object):
 		if not misc.check_file(path, True):
 			return
 		self.tree = Tree(path)
+		self.tree.print_current_node()
 
 		if self.tree.is_parsed:
 			self.tree.generate_export_functions()
@@ -211,7 +212,13 @@ class CLI(cmd.Cmd, object):
 			return
 
 		while True:
+			start = time.time()
 			self.__generate_test_case()
+			end = time.time()
+			
+			with open(self.p.get_experiment_path() + "time", "a") as f:
+				f.write(str(end-start) + "\n")
+			print("time: " + str(end-start))
 
 			while True:
 				if self.verbose:
@@ -222,7 +229,7 @@ class CLI(cmd.Cmd, object):
 					if not self.p.next_path():
 						return
 					break
-			self.tree = self.tree = Tree(SETTINGS.get("template_path") + SETTINGS.get("template_file_name"))
+			self.tree = Tree(SETTINGS.get("template_path") + SETTINGS.get("template_file_name"))
 
 	def __generate_test_case(self):
 		tmp_path = self.p.get_current_test_case_path() + SETTINGS.get("test_case_folder_name") + "_" + str(self.p.get_current_test_case_nb()) + ".test_case"
@@ -249,7 +256,7 @@ class CLI(cmd.Cmd, object):
 				print(self.p.get_current_test_artifact_path() + " already exists . Overwrite!")
 			else:
 				return
-		self.tree.export()
+		self.tree.export(self.p.get_current_test_artifact_path())
 
 	def help_generate(self):
 		print(" - Generate test case and test artifact.\n - A template must be parsed first")

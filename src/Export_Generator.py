@@ -47,7 +47,7 @@ def create_minimal_export():
 def create_export(root_node):
 	if os.path.getsize("./Export.py") == 22:
 		with open("./Export.py", "w") as f:
-			f.write("def export(root_node):\n")
+			f.write("def export(root_node, path):\n")
 			f.write("\t\"\"\"\n\tEntry point for the export function\n")
 			f.write("\tThe default calls go to the root node. It can be changed below\n\t\"\"\"\n")
 		create_export_calls(root_node, root_node.name)

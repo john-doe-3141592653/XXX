@@ -117,7 +117,7 @@ class Generator:
 			self.__add_variables_to_solver(s, constraint)
 			self.__add_constraint_to_solver(s, constraint)
 			variables.update(constraint.variables)
-
+		
 		if not s.check():
 			return False
 
@@ -216,7 +216,9 @@ class Generator:
 		return additional_constraints
 
 	def __assign_solver_results(self, s ,variables):
+		s.increase_timeout()
 		s.check()
+		s.set_timeout()
 		results = s.get_results()
 
 		for name in variables:
@@ -300,10 +302,17 @@ class Var():
 class SMT_Interface:
 	def __init__(self):
 		self.__solver = z3.Solver()
+		self.set_timeout()
 
 		self.__variables = {}
 		self.__constraints = {}
 		self.__variables["z3"] = z3
+	
+	def increase_timeout(self):
+		self.__solver.set("timeout", 100*int(SETTINGS.get("z3_timeout")))
+	
+	def set_timeout(self):
+		self.__solver.set("timeout", int(SETTINGS.get("z3_timeout")))
 
 	def add_int_variable(self, n):
 		if n not in self.__variables:
@@ -337,10 +346,12 @@ class SMT_Interface:
 		self.__solver.pop()
 
 	def check(self):
-		if self.__solver.check() == z3.sat:
+		c = self.__solver.check()
+		if c == z3.sat:
 			return True
-		else:
-			return False
+		elif c == z3.unknown:
+			print("TIMEOUT!")
+		return False
 
 	def get_results(self):
 		res = {}
