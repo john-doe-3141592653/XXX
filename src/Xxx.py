@@ -128,6 +128,7 @@ class CLI(cmd.Cmd, object):
 		self.tree = None
 		self.overwrite = False
 		self.verbose = True
+		self.auto = False
 				
 	def emptyline(self):
 		pass
@@ -207,7 +208,7 @@ class CLI(cmd.Cmd, object):
 			print("A template must be parsed first")
 			return
 
-		if not self.p.check_path():
+		if not self.p.check_path(self.auto, self.verbose):
 			print("file hierarchy is incomplete!")
 			return
 
@@ -305,15 +306,24 @@ class CLI(cmd.Cmd, object):
 			f.write(s)
 
 	def preloop(self):
+		self.auto = True
 		if len(sys.argv) > 1:
 			print(misc.color("* ---------------- *", "magenta"))
 			print(misc.color("|  ", "magenta") +\
 				  misc.color("TAF: mode auto", "cyan") + \
 				  misc.color("  |", "magenta"))
 			print(misc.color("* ---------------- *", "magenta"))
-			for arg in sys.argv[1:]:
-				self.onecmd(arg)
-			exit()
+
+		args = sys.argv[1:]
+		i = 0
+		while i < len(args):
+			if args[i] == "set":
+				self.do_set(args[i+1] + " " + args[i+2] + "!")
+				i += 2
+			else:
+				self.onecmd(args[i])
+			i += 1
+		exit()
 
 ###############################################################################
 # --- Settings -------------------------------------------------------------- #
@@ -467,12 +477,15 @@ class Path():
 		if 0 <= p < self.__setting_parameters["nb_test_artifacts"]:
 			self.__current_test_artifact = p
 
-	def check_path(self):
+	def check_path(self, auto, verbose):
 		if not misc.check_folder(self.get_experiment_path()):
 			while(True):
-				print("Create " + misc.color(self.get_experiment_path(), "cyan") + "?")
-				print(misc.underline("Y") + "es/" + misc.underline("N") + "o: ", end="")
-				yn = input().upper()
+				if auto:
+					yn = "Y"
+				else:
+					print("Create " + misc.color(self.get_experiment_path(), "cyan") + "?")
+					print(misc.underline("Y") + "es/" + misc.underline("N") + "o: ", end="")
+					yn = input().upper()
 				if yn == "N":
 					return
 				elif yn == "Y":
@@ -483,12 +496,15 @@ class Path():
 			return True
 		else:
 			yall = False
+			if auto:
+				yall = True
 			complete = True
 			while True:
 				if not misc.check_folder(self.get_current_test_artifact_path()):
 					if yall:
 						os.system("mkdir -p " + self.get_current_test_artifact_path())
-						print("Create " + misc.color(self.get_current_test_artifact_path(), "cyan"))
+						if verbose:
+							print("Create " + misc.color(self.get_current_test_artifact_path(), "cyan"))
 					else:
 						while True:
 							print("Create " + misc.color(self.get_current_test_artifact_path(), "cyan") + "?")
