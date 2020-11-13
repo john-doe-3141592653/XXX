@@ -306,8 +306,8 @@ class CLI(cmd.Cmd, object):
 			f.write(s)
 
 	def preloop(self):
-		self.auto = True
 		if len(sys.argv) > 1:
+			self.auto = True
 			print(misc.color("* ---------------- *", "magenta"))
 			print(misc.color("|  ", "magenta") +\
 				  misc.color("TAF: mode auto", "cyan") + \
@@ -323,7 +323,6 @@ class CLI(cmd.Cmd, object):
 			else:
 				self.onecmd(args[i])
 			i += 1
-		exit()
 
 ###############################################################################
 # --- Settings -------------------------------------------------------------- #

@@ -225,7 +225,6 @@ class Constraint(Element):
 				return var_id
 
 	def __build_z3_query(self, expr):
-		print(expr)
 		new_expr = ""
 		l = Expr_lexer(expr)
 		token_array = l.get_token_array()

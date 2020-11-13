@@ -41,7 +41,7 @@ import Miscellaneous as misc
 def create_minimal_export():
 	if not misc.check_file("Export.py", True):
 		with open("./Export.py", "w") as f:
-			f.write("def export(arg):\n\tpass")
+			f.write("def export(root_node, path):\n\tpass")
 
 
 def create_export(root_node):
