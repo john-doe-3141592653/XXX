@@ -1,2 +1,2 @@
-def export(arg):
+def export(root_node, path):
 	pass
