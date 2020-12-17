@@ -19,7 +19,7 @@
 		     quantifiers CDATA #IMPLIED
 		     ranges CDATA #IMPLIED>
 <!ATTLIST parameter name CDATA #REQUIRED
-		    type (boolean | string | integer | real) #REQUIRED
+		    types (boolean | string | integer | real) #IMPLIED
 		    values CDATA #IMPLIED
 		    ranges CDATA #IMPLIED
 		    weights CDATA #IMPLIED
