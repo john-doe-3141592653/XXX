@@ -318,15 +318,16 @@ class CLI(cmd.Cmd, object):
 				  misc.color("  |", "magenta"))
 			print(misc.color("* ---------------- *", "magenta"))
 
-		args = sys.argv[1:]
-		i = 0
-		while i < len(args):
-			if args[i] == "set":
-				self.do_set(args[i+1] + " " + args[i+2] + "!")
-				i += 2
-			else:
-				self.onecmd(args[i])
-			i += 1
+			args = sys.argv[1:]
+			i = 0
+			while i < len(args):
+				if args[i] == "set":
+					self.do_set(args[i+1] + " " + args[i+2] + "!")
+					i += 2
+				else:
+					self.onecmd(args[i])
+					i += 1
+			exit()
 
 ###############################################################################
 # --- Settings -------------------------------------------------------------- #
