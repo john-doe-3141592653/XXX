@@ -67,7 +67,27 @@ class Generator:
 		counter = 0
 		nodes, parameters = self.__tree.get_depth_elements(depth)
 
-		while (parameters or nodes) and counter < int(SETTINGS.get("max_backtracking")):
+		#debug
+		#for i in range(10):
+		#	print("*************************************************" + str(i))
+		#	nodes, parameters = self.__tree.get_depth_elements(i)
+		#	for node in nodes:
+		#		print("node -> " + node.name)
+		#		node.change_nb_instances(1)
+		#	for parameter in parameters:
+		#		print("parameter -> " + parameter.name)
+
+		#for i, constraint in enumerate(self.__constraints):
+		#	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" + str(i))
+		#	for c in constraint:
+		#		print(c.raw_expressions)
+
+		while True:
+			if counter == int(SETTINGS.get("max_backtracking")):
+				print("--> false")
+				return False
+			if not(parameters or nodes):
+				return True
 			if len(self.__constraints) > depth:
 				constraints = self.__constraints[depth]
 			else:
@@ -86,7 +106,6 @@ class Generator:
 			nodes, parameters = self.__tree.get_depth_elements(depth)
 			self.__constraints = [[]]
 			self.__set_constraints()
-		return True
 
 	def __reset_depth(self, nodes, parameters):
 		for node in nodes:

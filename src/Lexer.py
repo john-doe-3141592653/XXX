@@ -84,7 +84,7 @@ class Expr_lexer(Lexer):
 				return self.__extract_tree_path(word)
 		if len(word) == 1:
 			return Token("QUANTIFIER", word)			
-		elif word in ["OR", "AND", "IMPLIES", "DISTINCT"]:
+		elif word in ["NOT", "OR", "AND", "IMPLIES", "DISTINCT"]:
 			return Token("LOGIC_OPERATOR", "z3." + word[0] + word[1:].lower())
 		elif word in ["SUP", "SUPEQ", "INF", "INFEQ", "EQ", "DIF"]:
 			return Token("COMPARISON_OPERATOR", word)

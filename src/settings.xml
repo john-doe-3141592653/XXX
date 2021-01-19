@@ -10,7 +10,7 @@
     <parameter name="parameter_max_nb_instances" type="integer" value="50" />
     <parameter name="string_parameter_max_size" type="integer" value="50" />
     <parameter name="node_max_nb_instances" type="integer" value="100" />
-    <parameter name="max_backtracking" type="integer" value="100" />
+    <parameter name="max_backtracking" type="integer" value="10" />
     <parameter name="max_diversity" type="integer" value="10" />
 	<parameter name="z3_timeout" type="integer" value="10000" />
 </settings>

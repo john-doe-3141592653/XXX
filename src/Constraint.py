@@ -1,3 +1,36 @@
+'''
+Copyright or © or Copr.
+	
+This software is a computer program whose purpose is to generate random
+test case from a template file describing the data model.
+	
+This software is governed by the CeCILL-B license under French law and
+abiding by the rules of distribution of free software.  You can  use,
+modify and/ or redistribute the software under the terms of the CeCILL-B
+license as circulated by CEA, CNRS and INRIA at the following URL
+"http://www.cecill.info".
+	
+As a counterpart to the access to the source code and  rights to copy,
+modify and redistribute granted by the license, users are provided only
+with a limited warranty  and the software's author,  the holder of the
+economic rights,  and the successive licensors  have only  limited
+liability.
+	
+In this respect, the user's attention is drawn to the risks associated
+with loading,  using,  modifying and/or developing or reproducing the
+software by the user in light of its specific status of free software,
+that may mean  that it is complicated to manipulate,  and  that  also
+therefore means  that it is reserved for developers  and  experienced
+professionals having in-depth computer knowledge. Users are therefore
+encouraged to load and test the software's suitability as regards their
+requirements in conditions enabling the security of their systems and/or
+data to be ensured and,  more generally, to use and operate it in the
+same conditions as regards security.
+	
+The fact that you are presently reading this means that you have had
+knowledge of the CeCILL-B license and that you accept its terms.
+'''
+
 from Element import Element
 from Lexer import Expr_lexer, Tree_path_lexer
 
@@ -102,7 +135,7 @@ class Constraint(Element):
 		M = int(self.__evaluate_expr(q_first.M))
 
 		if m > M:
-			if q_first == "forall":
+			if q_first.type == "forall":
 				return "True"
 			else: #exist
 				return "False"
@@ -132,7 +165,7 @@ class Constraint(Element):
 		return new_expr
 
 	def __substitute(self, expr, q_name, val):
-		new_expr = ""		
+		new_expr = ""
 		l = Expr_lexer(expr)
 		token_array = l.get_token_array()
 		for token in token_array[:-1]:
@@ -229,11 +262,18 @@ class Constraint(Element):
 		l = Expr_lexer(expr)
 		token_array = l.get_token_array()
 
-		for token in token_array[:-1]:
+		for i, token in enumerate(token_array[:-1]):
 			if token.type == "TREE_PATH":
-				new_expr += self.__evaluate_tree_path(token.value) + " "
+				tp = self.__evaluate_tree_path(token.value)
+				if tp is None:
+					new_expr += "True "
+				else:
+					new_expr += tp + " "
 			elif token.type == "COMPARISON_OPERATOR":
 				new_expr += self.__get_comparison_operator_eq(token.value) + " "
+			elif token.type == "STRING":
+				element = self.__parent.get_element_from_current_node(token_array[i-2].value)
+				new_expr += str(element.get_values_array().index(token.value)) + " "
 			else:
 				new_expr += token.value + " "
 		return new_expr
@@ -261,7 +301,7 @@ class Constraint(Element):
 			ta.append(q.type)
 			qa.append(q.name)
 			ra.append((q.m, q.M))					
-		return Constraint(None, None, None, self.__raw_expressions, ta, qa, ra)
+		return Constraint(self._name, self._depth, self.__parent, self.__raw_expressions, ta, qa, ra)
 
 	def set_parent(self, p):
 		self.__parent = p
@@ -273,6 +313,10 @@ class Constraint(Element):
 	def get_variables(self):
 		return self.__variables
 	variables = property(get_variables)
+
+	def get_raw_expressions(self):
+		return self.__raw_expressions
+	raw_expressions = property(get_raw_expressions)
 
 	def get_expressions(self):
 		return self.__expressions

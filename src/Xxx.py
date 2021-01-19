@@ -243,8 +243,12 @@ class CLI(cmd.Cmd, object):
 		else:
 			if self.verbose:
 				print("Create new test case: " + misc.color(SETTINGS.get("test_case_folder_name") + ".test_case", "cyan"))
-		if not self.tree.generate(self.verbose):
-			return
+
+		counter = 0
+		while not self.tree.generate(self.verbose):
+			print(counter)
+			self.tree = Tree(SETTINGS.get("template_path") + SETTINGS.get("template_file_name"))
+			counter += 1
 		if self.verbose:
 			self.tree.print_current_node()
 		self.tree.write_test_case(tmp_path)
