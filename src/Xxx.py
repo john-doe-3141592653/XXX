@@ -314,7 +314,7 @@ class CLI(cmd.Cmd, object):
 			self.auto = True
 			print(misc.color("* ---------------- *", "magenta"))
 			print(misc.color("|  ", "magenta") +\
-				  misc.color("TAF: mode auto", "cyan") + \
+				  misc.color("XXX: mode auto", "cyan") + \
 				  misc.color("  |", "magenta"))
 			print(misc.color("* ---------------- *", "magenta"))
 
