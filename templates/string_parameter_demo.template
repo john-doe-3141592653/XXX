@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<root name="string_parameter_demo">
-    <parameter name="param_0" type="string" values="apple;banana;cherry"/>
-    <parameter name="param_1" type="string" values="apple;banana;cherry" nb_instances="5"/>
-    <parameter name="param_2" type="string" values="apple;banana;cherry" weights="7;0;3" nb_instances="10"/>
-</root>
