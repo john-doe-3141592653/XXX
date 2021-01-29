@@ -1,7 +1,7 @@
 --- XXX: xxxxxxx xxxxxxxxxx xxxxxxxxx ---
 ===============================
 
-The purpose of XXX is to generate random test case from a template file describing the data model. XXX provides a command line interface. When launched, type "help" in the prompt to get a list of the available commands.
+The purpose of XXX is to generate random test cases from a template file describing the data model. XXX provides a command line interface. When launched, type "help" in the prompt to get a list of the available commands.
 Type "help <command_name>" to get specific info on a command.
 
 
@@ -37,7 +37,7 @@ Contents of the repository:
  1. src: the source code and the default settings
  2. templates : The template format specification (DTD and BNF) and a set of
  templates, including:
- 	* the running example of the ISSRE paper (oz_reduced_paper.template)
+ 	* the running example of the ISSTA paper (oz_reduced_paper.template)
  	* the complete Oz example (oz_complete.template)
  	* the tax payer example (tax_payer_paper.template)
  	* and many more
