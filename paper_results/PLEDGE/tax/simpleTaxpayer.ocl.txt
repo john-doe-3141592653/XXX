@@ -1,0 +1,51 @@
+package simpleTaxPayer
+
+-- constraints on multiplicities (number of instancies)
+
+context TestCaseTaxPayer inv : self.tax_payer->size()>=1 and self.tax_payer->size()<=50
+context Physical_person inv: self.address->size()>=1 and self.address->size()<=3
+context Tax_payer inv: self.child->size()>=0 and self.child->size()<=3
+context Tax_payer inv: self.income->size()>=1 and self.income->size()<=3
+
+
+-- constraints on attributes values min-max
+
+context Physical_person inv C1: self.birth_year>=1900 and self.birth_year<2020
+
+-- special constraints
+
+-- C2 states that the disability rate is within the range (0..1] when the individual is disabled, and zero otherwise
+context Physical_person inv C2:
+if (self.disability_type = Disability::None) then (self.disability_rate = 0)
+else (self.disability_rate > 0 and self.disability_rate <= 1.0)
+endif
+
+-- C3 states that taxpayers who have an address in Luxembourg are considered residents
+context Tax_payer inv C3:
+not self.address->forAll(a:Address | a.country <> Country::LU) implies self.is_resident=true
+
+-- C4 states that taxpayers with a local income but no local address are considered non-residents
+context Tax_payer inv C4:
+self.income->exists(inc:Income | inc.is_local=true) and
+not self.address->exists(a:Address | a.country = Country::LU)
+implies self.is_resident=false
+
+-- C5 states that a tax card applies only to employment and pension incomes.
+context Income inv C5:
+if(self.oclIsTypeOf(Other)) then
+self.tax_card->size()=0 else
+self.tax_card->size()=1
+endif
+
+--context Tax_payer inv: not self.income->forAll(inc:Income | inc.oclIsUndefined())
+--context Physical_person inv: not self.address->forAll (a:Address |a.oclIsUndefined())
+--context Income inv: not self.tax_payer.oclIsUndefined()
+--context Tax_Card inv: not self.income.oclIsUndefined()
+
+-- not implemented
+-- constraints on--context Physical_person inv C1:
+--let max:Integer = 100 in self.get_age() <= max and
+--self.get_age() >= 0
+--
+
+endpackage
