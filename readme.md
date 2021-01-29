@@ -43,7 +43,7 @@ Contents of the repository:
  	* and many more
  3. a demonstration video
  4. the transcript of the video
- 5. the link to the paper results
+ 5. the paper results
  
  
 This software is released under CeCILL-B license (similar to BSD, without copyleft) 
