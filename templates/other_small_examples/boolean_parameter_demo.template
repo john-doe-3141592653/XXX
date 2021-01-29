@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<root name="boolean_parameter_demo">
+    <parameter name="param_0" type="boolean"/>
+    <parameter name="param_1" type="boolean" nb_instances="5"/>
+    <parameter name="param_2" type="boolean" values="true;false" weights="30;17" nb_instances="10"/>
+</root>

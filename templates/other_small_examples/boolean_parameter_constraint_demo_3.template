@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<root name="boolean_parameter_constraint_demo">
+    <parameter name="param_0" type="boolean" nb_instances="2"/>
+    <parameter name="param_1" type="boolean" nb_instances="5"/>
+
+    <constraint name="constraint_demo"
+                expressions="IMPLIES(boolean_parameter_constraint_demo\param_0[0] EQ boolean_parameter_constraint_demo\param_1[0], boolean_parameter_constraint_demo\param_1[4] EQ True)"/>
+</root>
